@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 
-const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
+const val AUTHOR = "com.quotegen.quotegeenerator.AUTHOR"
+const val QUOTE = "com.quotegen.quotegeenerator.QUOTE"
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,10 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when the user taps the Send button */
     fun sendMessage(view: View) {
-        val editText = findViewById<EditText>(R.id.editText)
-        val message = editText.text.toString()
+        val authorText = findViewById<EditText>(R.id.authorText)
+        val author = authorText.text.toString()
+
+        val quoteText = findViewById<EditText>(R.id.quoteText)
+        val quote = quoteText.text.toString().replace(regex = "\\s+".toRegex(), replacement = " ")
+
         val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message)
+            putExtra(AUTHOR, author)
+            putExtra(QUOTE, quote)
         }
         startActivity(intent)
     }
