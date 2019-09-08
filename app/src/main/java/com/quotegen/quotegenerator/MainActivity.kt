@@ -1,4 +1,4 @@
-package com.example.myfirstapp
+package com.quotegen.quotegenerator
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
